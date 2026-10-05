@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SecureFort Login</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 360px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: darkred;
+            margin-bottom: 15px;
+        }
+
+        .logout {
+            color: green;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SecureFort</h1>
+
+    <div th:if="${param.error}" class="error">
+        Invalid username or password.
+    </div>
+
+    <div th:if="${param.logout}" class="logout">
+        You have been logged out successfully.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+
+        <label for="username">
+            Username
+        </label>
+
+        <input
+            type="text"
+            id="username"
+            name="username"
+            required
+        />
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            required
+        />
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
